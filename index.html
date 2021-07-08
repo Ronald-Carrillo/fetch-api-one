@@ -25,5 +25,42 @@ body{
     function renderPokemon(image){
         pokemon.setAttribute('src',image)
     }
+
+    // fetch('url',{
+    //     // method: 'GET',
+    //     // headers:{
+    //     //     'Content-type': 'aplication/json',
+
+    //     // },
+    //     // body: JSON.stringify({
+    //     //     name: 'ronald',
+    //     //     age:28,
+    //     // })
+    // })
+
+    // .then((response) =>{
+    // return response.json()
+    //  .then()
+    // })
+    
+    // .then(Response => Response.json())
+    // .then(data =>{
+    //  renderPokemon(data.image)
+    // })
+
+     fetch('pikachu.png') 
+     .then(Response => Response.blob()) //tomar un binario en un string
+    .then(binaryLargeObject =>{
+      const demString =  URL.createObjectURL(binaryLargeObject)
+    renderPokemon(demString) 
+    })
+
+     fetch('https://pokeapi.co/api/v2/pokemon/27/') 
+     .then(Response => Response.json()) //tomar un binario en un string
+    .then(pokemon =>{
+
+          renderPokemon(pokemon.sprites.front_default) 
+    })
+ 
 </script>
 </html>
